@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'create' %}">AddNewTask</a>
+</li>
+{% endblock menu %}
+{% block content %}
+    {% if not tasks %}
+        <h2>НЕТ ЗАДАЧ</h2>
+    {% endif %}
+
+    {% for task in tasks %}
+        <p>{{ task.summary }}: <a href="#">More...</a></p>
+    {% endfor %}
+{% endblock content %}
