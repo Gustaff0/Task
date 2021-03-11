@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View, TemplateView, RedirectView
+from django.http import HttpResponseRedirect, HttpResponseNotFound, Http404
 from webapp.models import Task
 from webapp.forms import TaskForm
 # Create your views here.
@@ -56,3 +57,24 @@ class Edit_task(View):
             return redirect('home')
         else:
             return render(request, 'edit.html', context={'form': form, 'task': task})
+
+
+class View_task(View):
+    def get(self, request, *args, **kwargs):
+        try:
+            task = get_object_or_404(Task, id=kwargs.get('pk'))
+        except:
+            raise Http404
+        return render(request, 'view.html', {'task':task})
+
+
+class Delete_task(View):
+    def get(self, request, *args, **kwargs):
+        task = get_object_or_404(Task, id=kwargs.get('pk'))
+        return render(request, 'delete.html', {'task': task})
+    def post(self, request, *args, **kwargs):
+        task = get_object_or_404(Task, id=kwargs.get('pk'))
+        task.delete()
+        return redirect('home')
+
+
