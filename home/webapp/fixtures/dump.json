@@ -1,0 +1,110 @@
+[
+{
+  "model": "webapp.type",
+  "pk": 1,
+  "fields": {
+    "name": "Task"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 2,
+  "fields": {
+    "name": "Bug"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 3,
+  "fields": {
+    "name": "Enhancement"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 1,
+  "fields": {
+    "name": "New"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 2,
+  "fields": {
+    "name": "In Progress"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 3,
+  "fields": {
+    "name": "Done"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 1,
+  "fields": {
+    "created_at": "2021-03-11T09:16:20.621Z",
+    "updated_at": "2021-03-11T09:16:20.621Z",
+    "summary": "Clean Auto",
+    "description": "fdgdgdgdgdgdgdgdgd",
+    "status": 1,
+    "type": 1
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 2,
+  "fields": {
+    "created_at": "2021-03-11T09:20:19.800Z",
+    "updated_at": "2021-03-11T09:20:19.800Z",
+    "summary": "Factory",
+    "description": "djdjgjdgjdjgdlgjdlkgjkdjgldkgdlgjld",
+    "status": 2,
+    "type": 1
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 3,
+  "fields": {
+    "created_at": "2021-03-11T09:25:35.296Z",
+    "updated_at": "2021-03-11T09:25:35.296Z",
+    "summary": "Global Problem",
+    "description": "fgfgfgfgfgfgf",
+    "status": 3,
+    "type": 2
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 4,
+  "fields": {
+    "created_at": "2021-03-11T09:26:02.939Z",
+    "updated_at": "2021-03-11T09:26:02.939Z",
+    "summary": "Blank",
+    "description": "BLankkkkk",
+    "status": 2,
+    "type": 3
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$wnCUhZUdMNxf$uZZRmbe07oHFf0dp9OhNyGUY8dgikmvcC9ExI91y/b0=",
+    "last_login": "2021-03-11T09:04:56.551Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@mail.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-03-11T09:04:20.771Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
