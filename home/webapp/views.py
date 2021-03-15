@@ -20,16 +20,16 @@ class Create_task(View):
     def post(self, request, *args, **kwargs):
         form = TaskForm(data=request.POST)
         if form.is_valid():
-            # summary = form.cleaned_data.get('summary')
-            # description = form.cleaned_data.get("description")
-            # status = form.cleaned_data.get('status')
-            # type = form.cleaned_data.get('type')
-            Task.objects.create(**form.cleaned_data
-                # summary=summary,
-                # description=description,
-                # status=status,
-                # type=type
+            summary = form.cleaned_data.get('summary')
+            description = form.cleaned_data.get("description")
+            status = form.cleaned_data.get('status')
+            type = form.cleaned_data.get('type')
+            task = Task.objects.create(
+                summary=summary,
+                description=description,
+                status=status
             )
+            task.type.set(type)
             return redirect('home')
         else:
             return render(request, 'create.html', {'form': form})
