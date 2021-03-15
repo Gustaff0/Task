@@ -12,7 +12,7 @@
 {% block content %}
 <div class="container">
 <h3>Summary : {{ task.summary }}</h3>
-<h6>Type : {{ task.type }}</h6><h6>Status: {{ task.status }}</h6>
+<p class="card-text">Type: {% for type in task.type.all %}{{ type.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p><h6>Status: {{ task.status }}</h6>
 <br>
 <br>
 <p>Description: {{ task.description }}</p>

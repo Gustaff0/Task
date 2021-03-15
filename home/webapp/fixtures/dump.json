@@ -43,49 +43,74 @@
 },
 {
   "model": "webapp.task",
+  "pk": 9,
+  "fields": {
+    "created_at": "2021-03-15T08:52:37.853Z",
+    "updated_at": "2021-03-15T08:52:37.853Z",
+    "summary": "dvd",
+    "description": "rfgeger",
+    "status": 2
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 10,
+  "fields": {
+    "created_at": "2021-03-15T09:05:21.588Z",
+    "updated_at": "2021-03-15T09:05:21.589Z",
+    "summary": "looooooooooool",
+    "description": "jjjj",
+    "status": 2
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 11,
+  "fields": {
+    "created_at": "2021-03-15T09:06:59.705Z",
+    "updated_at": "2021-03-15T09:06:59.705Z",
+    "summary": "Factory",
+    "description": "fgfddgd",
+    "status": 2
+  }
+},
+{
+  "model": "webapp.tasktype",
   "pk": 1,
   "fields": {
-    "created_at": "2021-03-11T09:16:20.621Z",
-    "updated_at": "2021-03-11T09:16:20.621Z",
-    "summary": "Clean Auto",
-    "description": "fdgdgdgdgdgdgdgdgd",
-    "status": 1,
+    "task": 9,
     "type": 1
   }
 },
 {
-  "model": "webapp.task",
+  "model": "webapp.tasktype",
   "pk": 2,
   "fields": {
-    "created_at": "2021-03-11T09:20:19.800Z",
-    "updated_at": "2021-03-11T09:20:19.800Z",
-    "summary": "Factory",
-    "description": "djdjgjdgjdjgdlgjdlkgjkdjgldkgdlgjld",
-    "status": 2,
-    "type": 1
+    "task": 9,
+    "type": 3
   }
 },
 {
-  "model": "webapp.task",
+  "model": "webapp.tasktype",
   "pk": 3,
   "fields": {
-    "created_at": "2021-03-11T09:25:35.296Z",
-    "updated_at": "2021-03-11T09:25:35.296Z",
-    "summary": "Global Problem",
-    "description": "fgfgfgfgfgfgf",
-    "status": 3,
+    "task": 10,
     "type": 2
   }
 },
 {
-  "model": "webapp.task",
+  "model": "webapp.tasktype",
   "pk": 4,
   "fields": {
-    "created_at": "2021-03-11T09:26:02.939Z",
-    "updated_at": "2021-03-11T09:26:02.939Z",
-    "summary": "Blank",
-    "description": "BLankkkkk",
-    "status": 2,
+    "task": 11,
+    "type": 2
+  }
+},
+{
+  "model": "webapp.tasktype",
+  "pk": 5,
+  "fields": {
+    "task": 11,
     "type": 3
   }
 },

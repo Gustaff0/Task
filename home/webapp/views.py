@@ -42,7 +42,7 @@ class Edit_task(View):
             'summary': task.summary,
             'description': task.description,
             'status': task.status,
-            'type': task.type
+            'type': task.type.all()
         })
         return render(request, 'edit.html', context={'form': form, 'task': task})
     def post(self, request, *args, **kwargs):
@@ -52,7 +52,7 @@ class Edit_task(View):
             task.summary = form.cleaned_data['summary']
             task.description = form.cleaned_data['description']
             task.status = form.cleaned_data['status']
-            task.type = form.cleaned_data['type']
+            task.type.set(form.cleaned_data.get('type'))
             task.save()
             return redirect('home')
         else:
