@@ -1,4 +1,5 @@
 from django.db import models
+from webapp.validator import MinLengthValidator
 
 # Create your models here.
 class TimeBase(models.Model):
@@ -32,8 +33,8 @@ class Status(models.Model):
 
 
 class Task(TimeBase):
-    summary = models.CharField(max_length=300, null=False, blank=False)
-    description = models.TextField(max_length=3000, null=True, blank=True)
+    summary = models.CharField(max_length=300, null=False, blank=False, validators=(MinLengthValidator(5),))
+    description = models.TextField(max_length=3000, null=True, blank=True, validators=(MinLengthValidator(5),))
     status = models.ForeignKey('webapp.Status', on_delete=models.CASCADE, related_name='status', verbose_name='Статус')
     type = models.ManyToManyField('webapp.Type', related_name='tasks', through='webapp.TaskType', through_fields=('task', 'type'))
 
