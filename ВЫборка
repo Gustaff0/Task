@@ -1,0 +1,8 @@
+./manage.py shell
+from webapp.models import Task
+
+1.Task.objects.filter(updated_at__gte='2020-02-22', status__name='Done') #work 2020-03-22
+2.Task.objects.filter(type__name__in=['Task', 'Enhancement'], status__name__in=['Done', 'In Progress'])
+3.Task.objects.filter(summary__contains='bug', type__name='Bug')
+
+
