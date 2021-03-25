@@ -4,7 +4,7 @@
     <h1>Edit Task</h1>
 <form action="{% url 'edit' task.pk %}" method="post">
 
-    {% include 'form.html'  with button_text='Edit' %}
+    {% include 'partial/form.html'  with button_text='Edit' %}
 
 </form>
 {% endblock %}

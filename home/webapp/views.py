@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import View, TemplateView, RedirectView, FormView
+from django.views.generic import View, TemplateView, RedirectView, FormView, ListView
 from django.http import HttpResponseRedirect, HttpResponseNotFound, Http404
 from webapp.models import Task
 from webapp.forms import TaskForm
@@ -7,12 +7,29 @@ from webapp.base_views import FormView as CustomFormView
 from django.urls import reverse
 # Create your views here.
 
-class List_tasks(TemplateView):
-    template_name='list.html'
+class List_tasks(ListView):
+    template_name = 'list.html'
+    model = Task
+    context_object_name = 'tasks'
+    ordering = ('summary', '-created_at')
+    paginate_by = 5
+    paginate_orphans = 1
 
-    def get_context_data(self, **kwargs):
-        kwargs['tasks'] = Task.objects.all()
-        return super().get_context_data(**kwargs)
+    # def get(self, request, **kwargs):
+    #     self.form = SearchForm(request.GET)
+    #     self.search_data = self.get_search_data()
+    #     return super(IndexView, self).get(request, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        # if self.search_data:
+        #     queryset = queryset.filter(
+        #         Q(title__icontains=self.search_data) |
+        #         Q(author__icontains=self.search_data) |
+        #         Q(content__icontains=self.search_data)
+        #     )
+        return queryset
 
 
 class Create_task(CustomFormView):

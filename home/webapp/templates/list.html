@@ -19,6 +19,8 @@
     <h1>Products</h1>
     {% if not tasks %}
         <h2>НЕТ ПРОДУКТОВ</h2>
+    {% else %}
+        {% include "partial/search_form.html" %}
     {% endif %}
 
     {% for task in tasks %}
@@ -34,6 +36,7 @@
         </div>
         <br>
     {% endfor %}
+         {% include 'partial/paginate.html' %}
     </div>
 
 
