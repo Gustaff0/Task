@@ -55,6 +55,10 @@ class TaskType(models.Model):
     def __str__(self):
         return "{} | {}".format(self.task, self.type)
 
+class Project(models.Model):
+    timestart = CharField(null=False, blank=False,)
+    
+
 
 
 

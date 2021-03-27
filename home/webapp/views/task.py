@@ -10,7 +10,7 @@ from django.utils.http import urlencode
 # Create your views here.
 
 class List_tasks(ListView):
-    template_name = 'list.html'
+    template_name = 'task/list.html'
     model = Task
     context_object_name = 'tasks'
     ordering = ('summary', '-created_at')
@@ -46,7 +46,7 @@ class List_tasks(ListView):
 
 
 class Create_task(CustomFormView):
-    template_name = 'create.html'
+    template_name = 'task/create.html'
     form_class = TaskForm
     redirect_url = 'home'
 
@@ -63,7 +63,7 @@ class Create_task(CustomFormView):
 
 
 class Edit_task(FormView):
-    template_name = 'edit.html'
+    template_name = 'task/edit.html'
     form_class = TaskForm
 
     def dispatch(self, request, *args, **kwargs):
@@ -99,16 +99,14 @@ class View_task(View):
             task = get_object_or_404(Task, id=kwargs.get('pk'))
         except:
             raise Http404
-        return render(request, 'view.html', {'task':task})
+        return render(request, 'task/view.html', {'task':task})
 
 
 class Delete_task(View):
     def get(self, request, *args, **kwargs):
         task = get_object_or_404(Task, id=kwargs.get('pk'))
-        return render(request, 'delete.html', {'task': task})
+        return render(request, 'task/delete.html', {'task': task})
     def post(self, request, *args, **kwargs):
         task = get_object_or_404(Task, id=kwargs.get('pk'))
         task.delete()
         return redirect('home')
-
-
