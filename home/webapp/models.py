@@ -37,7 +37,7 @@ class Task(TimeBase):
     description = models.TextField(max_length=3000, null=True, blank=True, validators=(MinLengthValidator(5),))
     status = models.ForeignKey('webapp.Status', on_delete=models.CASCADE, related_name='status', verbose_name='Статус')
     type = models.ManyToManyField('webapp.Type', related_name='tasks', through='webapp.TaskType', through_fields=('task', 'type'))
-    project = models.ForeignKey('webapp.Project', on_delete=models.CASCADE, related_name='project', verbose_name='Статус')
+    project = models.ForeignKey('webapp.Project', on_delete=models.CASCADE, related_name='project', verbose_name='Проект')
 
     class Meta:
         db_table = 'Task'
