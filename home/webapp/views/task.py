@@ -9,7 +9,7 @@ from django.db.models import Q
 from django.utils.http import urlencode
 # Create your views here.
 
-class List_tasks(ListView):
+class TaskList(ListView):
     template_name = 'task/list.html'
     model = Task
     context_object_name = 'tasks'
@@ -45,7 +45,7 @@ class List_tasks(ListView):
         return context
 
 
-class Create_task(CustomFormView):
+class TaskCreate(CustomFormView):
     template_name = 'task/create.html'
     form_class = TaskForm
     redirect_url = 'home'
@@ -62,7 +62,7 @@ class Create_task(CustomFormView):
         return super().form_valid(form)
 
 
-class Edit_task(FormView):
+class TaskEdit(FormView):
     template_name = 'task/edit.html'
     form_class = TaskForm
 
@@ -93,7 +93,7 @@ class Edit_task(FormView):
 
 
 
-class View_task(View):
+class TaskView(View):
     def get(self, request, *args, **kwargs):
         try:
             task = get_object_or_404(Task, id=kwargs.get('pk'))
@@ -102,7 +102,7 @@ class View_task(View):
         return render(request, 'task/view.html', {'task':task})
 
 
-class Delete_task(View):
+class TaskDelete(View):
     def get(self, request, *args, **kwargs):
         task = get_object_or_404(Task, id=kwargs.get('pk'))
         return render(request, 'task/delete.html', {'task': task})

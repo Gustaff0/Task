@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import widgets
-from webapp.models import Status, Type, Task
+from webapp.models import Status, Type, Task, Project
 #
 # class TaskForm(forms.Form):
 #     summary = forms.CharField(max_length=200, required=True, label='Summary')
@@ -17,3 +17,11 @@ class TaskForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     search_value = forms.CharField(max_length=100, required=False, label='Найти')
+
+
+
+class ProjectForm(forms.ModelForm):
+
+    class Meta:
+        model = Project
+        fields = ('name', 'description', 'timestart', 'timefinish')

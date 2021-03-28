@@ -15,14 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from webapp.views import List_tasks, Create_task, Edit_task, View_task, Delete_task
+from webapp.views.project import ProjectList, ProjectCreate, ProjectView, ProjectDelete
+from webapp.views.task import TaskCreate, TaskEdit, TaskView, TaskDelete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', List_tasks.as_view(), name='home' ),
-    path('create/', Create_task.as_view(), name='create'),
-    path('edit/<int:pk>/', Edit_task.as_view(), name='edit'),
-    path('view/<int:pk>/', View_task.as_view(), name='view'),
-    path('delete/<int:pk>', Delete_task.as_view(), name='delete')
+    path('', ProjectList.as_view(), name='home' ),
+    path('create/project/', ProjectCreate.as_view(), name='create'),
+    path('view/<int:pk>/project/', ProjectView.as_view(), name='view'),
+    path('delete/<int:pk>/project/', ProjectDelete.as_view(), name='delete'),
+    path('create/task/', TaskCreate.as_view(), name='create_task'),
+    path('view/task/<int:pk>/', TaskView.as_view(), name='view_task'),
+    path('delete/task/<int:pk>/', TaskDelete.as_view(), name='delete_task'),
+    path('edit/task/<int:pk>/', TaskEdit.as_view(), name='edit_task')
 
 ]

@@ -12,8 +12,8 @@
 {% block content %}
 
 
-    <h1>Are you sure want to delete Task "{{ task }}"?</h1>
-    <form method="POST" action="{% url "delete" task.pk %}" class="text-center">
+    <h1>Are you sure want to delete Project "{{ project }}"?</h1>
+    <form method="POST" action="{% url "delete" project.pk %}" class="text-center">
         {% csrf_token %}
         <p><input type="submit" value="Yeas!"></p>
         <a class="btn btn-primary" href="{% url 'home' %}" role="button">No!</a>

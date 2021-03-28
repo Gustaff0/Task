@@ -11,27 +11,25 @@
 <body>
 {% block menu %}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'create' %}">AddNewTask</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'create' %}">AddNewProject</a>
         </li>
 {% endblock %}
 {% block content %}
     <div class="container">
-    <h1>Products</h1>
-    {% if not tasks %}
-        <h2>НЕТ ПРОДУКТОВ</h2>
+    <h1>Projects</h1>
+    {% if not projects %}
+        <h2>НЕТ ПРОЕКТОВ!</h2>
     {% else %}
         {% include "partial/search_form.html" %}
     {% endif %}
 
-    {% for task in tasks %}
+    {% for project in projects %}
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">{{ task.summary }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{ task.description }}</h6>
-                <p class="card-text">Type: {% for type in task.type.all %}{{ type.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-                <a href="{% url 'edit' task.pk %}" class="card-link">Edit</a>
-                <a href="{% url 'delete' task.pk %}" class="card-link">Delete</a>
-                <a href="{% url 'view' task.pk %}" class="card-link">More..</a>
+                <h5 class="card-title">{{ project.name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ project.description }}</h6>
+                <a href="{% url 'delete' project.pk %}" class="card-link">Delete</a>
+                <a href="{% url 'view' project.pk %}" class="card-link">More..</a>
             </div>
         </div>
         <br>
