@@ -13,12 +13,8 @@ class ProjectCreate(CreateView):
     model = Project
 
     def get_success_url(self):
-        return reverse('project/view', kwargs={'pk' : self.kwargs.get('pk')})
+        return reverse('view', kwargs={'pk' : self.object.pk})
 
-    def form_valid(self, form):
-        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
-        form.instance.project = project
-        return super().form_valid(form)
 
 class ProjectList(ListView):
     template_name = 'project/list.html'

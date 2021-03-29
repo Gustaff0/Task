@@ -11,36 +11,22 @@
 <body>
 {% block content %}
 <div class="container">
-<h3>ProjectName : {{ project.name }}</h3>
+<h3>Summary : {{ task.summary }}</h3>
+<p class="card-text">Type: {% for type in task.type.all %}{{ type.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p><h6>Status: {{ task.status }}</h6>
 <br>
 <br>
-<p>Description: {{ project.description }}</p>
-
-    <h2>Tasks:</h2>
-{% for task in project.project.all %}
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{ task.summary }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{ task.description }}</h6>
-                <p class="card-text">Type: {% for type in task.type.all %}{{ type.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-                <a href="{% url 'edit_task' task.pk %}" class="card-link">Edit</a>
-                <a href="{% url 'delete_task' task.pk %}" class="card-link">Delete</a>
-                <a href="{% url 'view_task' task.pk %}" class="card-link">More..</a>
-            </div>
-        </div>
-        <br>
-{% if not task %}
-    <h2>НЕТ ЗАДАЧ!</h2>
-{% endif %}
-{% endfor %}
+<p>Description: {{ task.description }}</p>
 </div>
 {% endblock %}
     {% block menu %}
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{% url 'delete' project.pk %}">Delete</a>
+      <a class="nav-link active" aria-current="page" href="{% url 'edit_task' task.pk %}">Edit</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{% url 'create_task' project.pk %}">CreateNewTask</a>
+      <a class="nav-link active" aria-current="page" href="{% url 'delete_task' task.pk %}">Delete</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="{% url 'view' task.project.pk %}">BackToProject</a>
     </li>
     {% endblock %}
 
