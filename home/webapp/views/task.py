@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import View, TemplateView, RedirectView, FormView, ListView, CreateView, DetailView, UpdateView
+from django.views.generic import View, TemplateView, RedirectView, FormView, ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect, HttpResponseNotFound, Http404
 from webapp.models import Task, Project
 from webapp.forms import TaskForm, SearchForm
 from webapp.base_views import FormView as CustomFormView
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.db.models import Q
 from django.utils.http import urlencode
 # Create your views here.
@@ -77,11 +77,11 @@ class TaskView(DetailView):
     template_name = 'task/view.html'
 
 
-class TaskDelete(View):
-    def get(self, request, *args, **kwargs):
-        task = get_object_or_404(Task, id=kwargs.get('pk'))
-        return render(request, 'task/delete.html', {'task': task})
-    def post(self, request, *args, **kwargs):
-        task = get_object_or_404(Task, id=kwargs.get('pk'))
-        task.delete()
-        return redirect('home')
+class TaskDelete(DeleteView):
+    template_name = 'task/delete.html'
+    model = Task
+    context_object_name = 'task'
+
+    def get_success_url(self):
+        return reverse('view', kwargs={'pk': self.object.project.pk})
+

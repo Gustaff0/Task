@@ -1,7 +1,7 @@
-from django.views.generic import View, TemplateView, RedirectView, FormView, ListView, CreateView, DetailView
+from django.views.generic import View, TemplateView, RedirectView, FormView, ListView, CreateView, DetailView, UpdateView, DeleteView
 from webapp.models import Project
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from webapp.forms import ProjectForm, SearchForm, TaskForm
 from webapp.models import Project, Task
 from django.db.models import Q
@@ -54,17 +54,24 @@ class ProjectList(ListView):
         return context
 
 
+class ProjectEdit(UpdateView):
+    model = Project
+    template_name = 'project/edit.html'
+    form_class = ProjectForm
+    context_object_name = 'project'
+
+    def get_success_url(self):
+        return reverse('view', kwargs={'pk': self.object.pk})
+
+
 
 class ProjectView(DetailView):
     model = Project
     template_name = 'project/view.html'
 
 
-class ProjectDelete(View):
-    def get(self, request, *args, **kwargs):
-        project = get_object_or_404(Project, id=kwargs.get('pk'))
-        return render(request, 'project/delete.html', {'project': project})
-    def post(self, request, *args, **kwargs):
-        project = get_object_or_404(Project, id=kwargs.get('pk'))
-        project.delete()
-        return redirect('home')
+class ProjectDelete(DeleteView):
+    template_name = 'project/delete.html'
+    model = Project
+    context_object_name = 'project'
+    success_url = reverse_lazy('home')
