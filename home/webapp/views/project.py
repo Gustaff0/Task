@@ -12,6 +12,11 @@ class ProjectCreate(CreateView):
     form_class = ProjectForm
     model = Project
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('login')
+        return super().dispatch(request, *args, **kwargs)
+
     def get_success_url(self):
         return reverse('view', kwargs={'pk' : self.object.pk})
 
@@ -60,6 +65,11 @@ class ProjectEdit(UpdateView):
     form_class = ProjectForm
     context_object_name = 'project'
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('login')
+        return super().dispatch(request, *args, **kwargs)
+
     def get_success_url(self):
         return reverse('view', kwargs={'pk': self.object.pk})
 
@@ -75,3 +85,8 @@ class ProjectDelete(DeleteView):
     model = Project
     context_object_name = 'project'
     success_url = reverse_lazy('home')
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('login')
+        return super().dispatch(request, *args, **kwargs)

@@ -50,6 +50,11 @@ class TaskCreate(CreateView):
     template_name = 'task/create.html'
     form_class = TaskForm
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('login')
+        return super().dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
         task = form.save(commit=False)
@@ -67,6 +72,11 @@ class TaskEdit(UpdateView):
     form_class = TaskForm
     context_object_name = 'task'
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('login')
+        return super().dispatch(request, *args, **kwargs)
+
     def get_success_url(self):
         return reverse('view_task', kwargs={'pk': self.object.pk})
 
@@ -81,6 +91,11 @@ class TaskDelete(DeleteView):
     template_name = 'task/delete.html'
     model = Task
     context_object_name = 'task'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('login')
+        return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse('view', kwargs={'pk': self.object.project.pk})
