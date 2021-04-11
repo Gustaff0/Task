@@ -27,6 +27,8 @@
           <li class="nav-item">
               <a href="{% url 'login' %}?next={{ request.get_full_path }}" class="nav-link active" aria-current="page">Вход</a>
           </li>
+          <li class="nav-item"><a href="{% url 'register' %}?next={{ request.get_full_path }}" class="nav-link active" aria-current="page"">Регистрация</a>
+          </li>
           {% endif %}
         {% block menu %}{% endblock %}
       </ul>
