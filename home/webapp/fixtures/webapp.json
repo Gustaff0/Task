@@ -43,30 +43,6 @@
 },
 {
   "model": "webapp.task",
-  "pk": 12,
-  "fields": {
-    "created_at": "2021-03-15T10:02:51.835Z",
-    "updated_at": "2021-03-15T10:02:51.835Z",
-    "summary": "FLOR",
-    "description": "DDFSFSFS",
-    "status": 2,
-    "project": 1
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 14,
-  "fields": {
-    "created_at": "2021-03-18T07:50:45.722Z",
-    "updated_at": "2021-03-18T07:50:45.722Z",
-    "summary": "lolol55858",
-    "description": "tytytytyt",
-    "status": 1,
-    "project": 1
-  }
-},
-{
-  "model": "webapp.task",
   "pk": 15,
   "fields": {
     "created_at": "2021-03-18T07:51:24.456Z",
@@ -279,54 +255,6 @@
     "description": "dgfgdgdfgdg",
     "status": 2,
     "project": 5
-  }
-},
-{
-  "model": "webapp.tasktype",
-  "pk": 7,
-  "fields": {
-    "task": 12,
-    "type": 1
-  }
-},
-{
-  "model": "webapp.tasktype",
-  "pk": 8,
-  "fields": {
-    "task": 12,
-    "type": 2
-  }
-},
-{
-  "model": "webapp.tasktype",
-  "pk": 9,
-  "fields": {
-    "task": 12,
-    "type": 3
-  }
-},
-{
-  "model": "webapp.tasktype",
-  "pk": 13,
-  "fields": {
-    "task": 14,
-    "type": 1
-  }
-},
-{
-  "model": "webapp.tasktype",
-  "pk": 14,
-  "fields": {
-    "task": 14,
-    "type": 2
-  }
-},
-{
-  "model": "webapp.tasktype",
-  "pk": 15,
-  "fields": {
-    "task": 14,
-    "type": 3
   }
 },
 {
@@ -585,30 +513,12 @@
 },
 {
   "model": "webapp.project",
-  "pk": 7,
+  "pk": 10,
   "fields": {
-    "timestart": "2021-01-23",
+    "timestart": "2021-03-27",
     "timefinish": null,
-    "name": "None",
-    "description": "Noneeeeeeeeeeeeeeeeeee"
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 1,
-  "fields": {
-    "password": "pbkdf2_sha256$216000$wnCUhZUdMNxf$uZZRmbe07oHFf0dp9OhNyGUY8dgikmvcC9ExI91y/b0=",
-    "last_login": "2021-03-27T15:02:36.024Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "admin@mail.ru",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2021-03-11T09:04:20.771Z",
-    "groups": [],
-    "user_permissions": []
+    "name": "NewProject",
+    "description": "ghghgfhfhgfh"
   }
 }
 ]

@@ -1,0 +1,92 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$wnCUhZUdMNxf$uZZRmbe07oHFf0dp9OhNyGUY8dgikmvcC9ExI91y/b0=",
+    "last_login": "2021-04-12T07:19:26.053Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@mail.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-03-11T09:04:20.771Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$V7ZuMuBJQwFr$/ds4MAOw6/i6VNEKZvXPJELQiExzVKMpWRGGsU+CsJE=",
+    "last_login": "2021-04-12T08:07:57.048Z",
+    "is_superuser": false,
+    "username": "admin5585",
+    "first_name": "Bars",
+    "last_name": "Bars",
+    "email": "bars@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-12T07:52:47.542Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$bTMpvVM0JCm5$3YSq/v5PCN6Pr9yL8zmKHRbKXuLbno4rihXsKvh613E=",
+    "last_login": "2021-04-12T08:52:13.733Z",
+    "is_superuser": false,
+    "username": "bars11",
+    "first_name": "",
+    "last_name": "",
+    "email": "asbs80@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-12T08:52:12.886Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$GCcsPdbk2nhE$mUaDY2yw1x+Ahe2o6YsOu515kdxc1ZhaQ3HkowgJZNI=",
+    "last_login": "2021-04-12T08:54:18.785Z",
+    "is_superuser": false,
+    "username": "bars222",
+    "first_name": "",
+    "last_name": "Bars",
+    "email": "asbs80@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-12T08:54:17.550Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$U5LJvlhDFO6X$CDH1mSLNgz97cQ1XZg1fvQpS/2tj2QfYMG2xEYTTQpk=",
+    "last_login": "2021-04-12T08:54:44.602Z",
+    "is_superuser": false,
+    "username": "bars1212",
+    "first_name": "Bars",
+    "last_name": "",
+    "email": "asbs80@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-12T08:54:44.237Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
