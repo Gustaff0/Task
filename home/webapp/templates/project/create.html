@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Create Project</h1>
-<form action="{% url 'create' %}" method="post">
+<form action="{% url 'webapp:create' %}" method="post">
 
     {% include 'partial/form.html'  with button_text='Create' %}
 

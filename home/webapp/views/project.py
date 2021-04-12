@@ -14,11 +14,11 @@ class ProjectCreate(CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect('login')
+            return redirect('accounts:login')
         return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse('view', kwargs={'pk' : self.object.pk})
+        return reverse('webapp:view', kwargs={'pk' : self.object.pk})
 
 
 class ProjectList(ListView):
@@ -67,11 +67,11 @@ class ProjectEdit(UpdateView):
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect('login')
+            return redirect('accounts:login')
         return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse('view', kwargs={'pk': self.object.pk})
+        return reverse('webapp:view', kwargs={'pk': self.object.pk})
 
 
 
@@ -84,9 +84,9 @@ class ProjectDelete(DeleteView):
     template_name = 'project/delete.html'
     model = Project
     context_object_name = 'project'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('webapp:home')
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect('login')
+            return redirect('accounts:login')
         return super().dispatch(request, *args, **kwargs)

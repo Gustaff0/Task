@@ -23,9 +23,9 @@
                 <h5 class="card-title">{{ task.summary }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ task.description }}</h6>
                 <p class="card-text">Type: {% for type in task.type.all %}{{ type.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-                <a href="{% url 'edit_task' task.pk %}" class="card-link">Edit</a>
-                <a href="{% url 'delete_task' task.pk %}" class="card-link">Delete</a>
-                <a href="{% url 'view_task' task.pk %}" class="card-link">More..</a>
+                <a href="{% url 'webapp:edit_task' task.pk %}" class="card-link">Edit</a>
+                <a href="{% url 'webapp:delete_task' task.pk %}" class="card-link">Delete</a>
+                <a href="{% url 'webapp:view_task' task.pk %}" class="card-link">More..</a>
             </div>
         </div>
         <br>
@@ -37,13 +37,13 @@
 {% endblock %}
     {% block menu %}
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{% url 'delete' project.pk %}">Delete</a>
+      <a class="nav-link active" aria-current="page" href="{% url 'webapp:delete' project.pk %}">Delete</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{% url 'create_task' project.pk %}">CreateNewTask</a>
+      <a class="nav-link active" aria-current="page" href="{% url 'webapp:create_task' project.pk %}">CreateNewTask</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{% url 'edit' project.pk %}">EditProject</a>
+      <a class="nav-link active" aria-current="page" href="{% url 'webapp:edit' project.pk %}">EditProject</a>
     </li>
     {% endblock %}
 

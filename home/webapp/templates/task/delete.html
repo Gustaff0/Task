@@ -14,10 +14,10 @@
 
 
     <h1>Are you sure want to delete Task "{{ task }}"?</h1>
-    <form method="POST" action="{% url "delete_task" task.pk %}" class="text-center">
+    <form method="POST" action="{% url "webapp:delete_task" task.pk %}" class="text-center">
         {% csrf_token %}
         <p><input type="submit" value="Yeas!"></p>
-        <a class="btn btn-primary" href="{% url 'home' %}" role="button">No!</a>
+        <a class="btn btn-primary" href="{% url 'webapp:home' %}" role="button">No!</a>
     </form>
 
 

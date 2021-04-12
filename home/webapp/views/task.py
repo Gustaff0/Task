@@ -52,7 +52,7 @@ class TaskCreate(CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect('login')
+            return redirect('accounts:login')
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -61,7 +61,7 @@ class TaskCreate(CreateView):
         task.project = project
         task.save()
         form.save_m2m()
-        return redirect('view_task', pk=task.pk)
+        return redirect('webapp:view_task', pk=task.pk)
 
 
 
@@ -74,11 +74,11 @@ class TaskEdit(UpdateView):
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect('login')
+            return redirect('accounts:login')
         return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse('view_task', kwargs={'pk': self.object.pk})
+        return reverse('webapp:view_task', kwargs={'pk': self.object.pk})
 
 
 
@@ -94,9 +94,9 @@ class TaskDelete(DeleteView):
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect('login')
+            return redirect('accounts:login')
         return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse('view', kwargs={'pk': self.object.project.pk})
+        return reverse('webapp:view', kwargs={'pk': self.object.project.pk})
 

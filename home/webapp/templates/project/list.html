@@ -11,7 +11,7 @@
 <body>
 {% block menu %}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'create' %}">AddNewProject</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'webapp:create' %}">AddNewProject</a>
         </li>
 {% endblock %}
 {% block content %}
@@ -28,8 +28,8 @@
             <div class="card-body">
                 <h5 class="card-title">{{ project.name }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ project.description }}</h6>
-                <a href="{% url 'delete' project.pk %}" class="card-link">Delete</a>
-                <a href="{% url 'view' project.pk %}" class="card-link">More..</a>
+                <a href="{% url 'webapp:delete' project.pk %}" class="card-link">Delete</a>
+                <a href="{% url 'webapp:view' project.pk %}" class="card-link">More..</a>
             </div>
         </div>
         <br>
