@@ -1,5 +1,6 @@
 from django.db import models
 from webapp.validator import MinLengthValidator
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 class TimeBase(models.Model):
@@ -61,6 +62,7 @@ class Project(models.Model):
     timefinish = models.DateField(null=True, blank=True)
     name = models.CharField(max_length=300, null=False, blank=False, validators=(MinLengthValidator(4),))
     description = models.TextField(max_length=3000, null=False, blank=False, validators=(MinLengthValidator(10),))
+    user = models.ManyToManyField(get_user_model(), default=1, related_name='projects', verbose_name='Пользователь')
 
     class Meta:
         db_table = 'Project'

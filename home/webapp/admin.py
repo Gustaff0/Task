@@ -15,7 +15,7 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'description', 'timestart', 'timefinish']
     list_filter = ['name']
     search_fields = ['name', 'description']
-    fields = ['id', 'name', 'description', 'timestart', 'timefinish']
+    fields = ['id', 'name', 'description', 'timestart', 'timefinish', 'user']
     readonly_fields = ['id']
 
 
