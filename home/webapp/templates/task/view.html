@@ -19,15 +19,21 @@
 </div>
 {% endblock %}
     {% block menu %}
+    {% if perms.webapp.edit_task or project.user == request.user %}
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="{% url 'webapp:edit_task' task.pk %}">Edit</a>
     </li>
+    {% endif %}
+    {% if perms.webapp.delete_task or project.user == request.user %}
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="{% url 'webapp:delete_task' task.pk %}">Delete</a>
     </li>
+    {% endif %}
+    {% if perms.webapp.view_project or project.user == request.user %}
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="{% url 'webapp:view' task.project.pk %}">BackToProject</a>
     </li>
+    {% endif %}
     {% endblock %}
 
 

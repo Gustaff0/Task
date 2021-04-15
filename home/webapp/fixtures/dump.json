@@ -43,18 +43,6 @@
 },
 {
   "model": "webapp.task",
-  "pk": 15,
-  "fields": {
-    "created_at": "2021-03-18T07:51:24.456Z",
-    "updated_at": "2021-03-18T07:51:24.456Z",
-    "summary": "hghghg",
-    "description": "",
-    "status": 2,
-    "project": 1
-  }
-},
-{
-  "model": "webapp.task",
   "pk": 16,
   "fields": {
     "created_at": "2021-03-18T10:14:07.461Z",
@@ -255,14 +243,6 @@
     "description": "dgfgdgdfgdg",
     "status": 2,
     "project": 5
-  }
-},
-{
-  "model": "webapp.tasktype",
-  "pk": 16,
-  "fields": {
-    "task": 15,
-    "type": 3
   }
 },
 {
@@ -488,7 +468,10 @@
     "timestart": "2021-03-30",
     "timefinish": null,
     "name": "FirstProject",
-    "description": "Lodddddddddddddddddddddddddddddddddddddddddddd1"
+    "description": "Lodddddddddddddddddddddddddddddddddddddddddddd1",
+    "user": [
+      1
+    ]
   }
 },
 {
@@ -498,7 +481,10 @@
     "timestart": "2021-03-29",
     "timefinish": null,
     "name": "Project2",
-    "description": "dffddgdgdgdg"
+    "description": "dffddgdgdgdg",
+    "user": [
+      1
+    ]
   }
 },
 {
@@ -508,7 +494,10 @@
     "timestart": "2021-01-23",
     "timefinish": null,
     "name": "ProjectDirt",
-    "description": "buggggggggggggggggggggg"
+    "description": "buggggggggggggggggggggg",
+    "user": [
+      1
+    ]
   }
 },
 {
@@ -518,7 +507,131 @@
     "timestart": "2021-03-27",
     "timefinish": null,
     "name": "NewProject",
-    "description": "ghghgfhfhgfh"
+    "description": "ghghgfhfhgfh",
+    "user": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 11,
+  "fields": {
+    "timestart": "2021-03-27",
+    "timefinish": null,
+    "name": "Project and user",
+    "description": "fgdgdfgdgd",
+    "user": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 12,
+  "fields": {
+    "timestart": "2021-03-27",
+    "timefinish": null,
+    "name": "Project and user11111",
+    "description": "fgdgdfgdgd",
+    "user": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 13,
+  "fields": {
+    "timestart": "2021-03-27",
+    "timefinish": null,
+    "name": "Project and user11111222",
+    "description": "fgdgdfgdgd",
+    "user": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 14,
+  "fields": {
+    "timestart": "2021-03-27",
+    "timefinish": null,
+    "name": "Project and user11111222ddd",
+    "description": "fgdgdfgdgddfd",
+    "user": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 15,
+  "fields": {
+    "timestart": "2021-03-27",
+    "timefinish": null,
+    "name": "Project and user11111222ddtyyhffytd",
+    "description": "fgdgdfgdgddfd",
+    "user": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 16,
+  "fields": {
+    "timestart": "2021-03-27",
+    "timefinish": null,
+    "name": "Project and user11111222ddtyyhffytd",
+    "description": "fgdgdfgdgddfd",
+    "user": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 17,
+  "fields": {
+    "timestart": "2021-03-27",
+    "timefinish": null,
+    "name": "121212121212",
+    "description": "12121212121212121",
+    "user": [
+      7
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 18,
+  "fields": {
+    "timestart": "2021-03-29",
+    "timefinish": null,
+    "name": "FisrtUsersProject",
+    "description": "12213213123132",
+    "user": [
+      6,
+      7,
+      8
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 19,
+  "fields": {
+    "timestart": "2021-01-23",
+    "timefinish": null,
+    "name": "FisrtUsersProject2",
+    "description": "1113fgdgdfgg",
+    "user": [
+      6,
+      7,
+      8
+    ]
   }
 }
 ]

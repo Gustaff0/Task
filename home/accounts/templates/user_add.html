@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Add User</h1>
+<form action="{% url 'accounts:add_user' project.pk %}" method="post">
+
+    {% include 'partial/form.html'  with button_text='Add' %}
+
+</form>
+{% endblock %}

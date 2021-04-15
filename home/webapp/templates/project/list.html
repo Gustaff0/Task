@@ -10,9 +10,11 @@
 </head>
 <body>
 {% block menu %}
+    {% if perms.webapp.add_project or project.user == request.user %}
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'webapp:create' %}">AddNewProject</a>
         </li>
+    {% endif %}
 {% endblock %}
 {% block content %}
     <div class="container">
@@ -28,8 +30,12 @@
             <div class="card-body">
                 <h5 class="card-title">{{ project.name }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ project.description }}</h6>
+                {% if perms.webapp.delete_project or project.user == request.user %}
                 <a href="{% url 'webapp:delete' project.pk %}" class="card-link">Delete</a>
+                {% endif %}
+                {% if perms.webapp.view_project or project.user == request.user %}
                 <a href="{% url 'webapp:view' project.pk %}" class="card-link">More..</a>
+                {% endif %}
             </div>
         </div>
         <br>

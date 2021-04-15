@@ -7,6 +7,7 @@ from webapp.base_views import FormView as CustomFormView
 from django.urls import reverse, reverse_lazy
 from django.db.models import Q
 from django.utils.http import urlencode
+from django.contrib.auth.mixins import PermissionRequiredMixin
 # Create your views here.
 
 # class TaskList(ListView):
@@ -45,10 +46,15 @@ from django.utils.http import urlencode
 #         return context
 
 
-class TaskCreate(CreateView):
+class TaskCreate(PermissionRequiredMixin, CreateView):
     model = Task
     template_name = 'task/create.html'
     form_class = TaskForm
+    permission_required = 'webapp.add_task'
+
+    def has_permission(self):
+        project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
+        return super().has_permission() and self.request.user in project.user.all()
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
@@ -66,11 +72,17 @@ class TaskCreate(CreateView):
 
 
 
-class TaskEdit(UpdateView):
+class TaskEdit(PermissionRequiredMixin, UpdateView):
     model = Task
     template_name = 'task/edit.html'
     form_class = TaskForm
     context_object_name = 'task'
+    permission_required = 'webapp.change_task'
+
+    def has_permission(self):
+        # task = get_object_or_404(Task, pk=self.kwargs.get('pk'))
+        task = self.get_object()
+        return super().has_permission() and self.request.user in task.project.user.all()
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
@@ -82,15 +94,25 @@ class TaskEdit(UpdateView):
 
 
 
-class TaskView(DetailView):
+class TaskView(PermissionRequiredMixin, DetailView):
     model = Task
     template_name = 'task/view.html'
+    permission_required = 'webapp.view_task'
+
+    def has_permission(self):
+        task = self.get_object()
+        return super().has_permission() and self.request.user in task.project.user.all()
 
 
-class TaskDelete(DeleteView):
+class TaskDelete(PermissionRequiredMixin, DeleteView):
     template_name = 'task/delete.html'
     model = Task
     context_object_name = 'task'
+    permission_required = 'webapp.delete_task'
+
+    def has_permission(self):
+        task = self.get_object()
+        return super().has_permission() and self.request.user in task.project.user.all()
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:

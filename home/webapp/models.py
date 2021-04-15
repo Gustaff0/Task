@@ -68,6 +68,9 @@ class Project(models.Model):
         db_table = 'Project'
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
+        permissions = [
+            ('user_add_or_del', 'Удаление или добавление')
+        ]
 
     def __str__(self):
         return f'{self.name} : {self.description}'

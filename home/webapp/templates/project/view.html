@@ -15,6 +15,10 @@
 <br>
 <br>
 <p>Description: {{ project.description }}</p>
+    <h4>Users:</h4>
+    {% for i in project.user.all %}
+    <p>{{ i }}</p>
+    {% endfor %}
 
     <h2>Tasks:</h2>
 {% for task in project.project.all %}
@@ -23,9 +27,15 @@
                 <h5 class="card-title">{{ task.summary }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ task.description }}</h6>
                 <p class="card-text">Type: {% for type in task.type.all %}{{ type.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                {% if perms.webapp.change_task or project.user == request.user %}
                 <a href="{% url 'webapp:edit_task' task.pk %}" class="card-link">Edit</a>
+                {% endif %}
+                {% if perms.webapp.delete_task or project.user == request.user %}
                 <a href="{% url 'webapp:delete_task' task.pk %}" class="card-link">Delete</a>
+                {% endif %}
+                {% if perms.webapp.view_task or project.user == request.user %}
                 <a href="{% url 'webapp:view_task' task.pk %}" class="card-link">More..</a>
+                {% endif %}
             </div>
         </div>
         <br>
@@ -36,15 +46,31 @@
 </div>
 {% endblock %}
     {% block menu %}
+    {% if perms.webapp.delete_project or project.user == request.user %}
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="{% url 'webapp:delete' project.pk %}">Delete</a>
     </li>
+    {% endif %}
+    {% if perms.webapp.add_task or project.user == request.user %}
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="{% url 'webapp:create_task' project.pk %}">CreateNewTask</a>
     </li>
+    {% endif %}
+    {% if perms.webapp.change_project or project.user == request.user %}
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="{% url 'webapp:edit' project.pk %}">EditProject</a>
     </li>
+    {% endif %}
+    {% if perms.webapp.change_project or project.user == request.user %}
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="{% url 'accounts:add_user' project.pk %}">Add User</a>
+    </li>
+    {% endif %}
+    {% if perms.webapp.change_project or project.user == request.user %}
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="{% url 'accounts:delete_user' project.pk %}">Delete User</a>
+    </li>
+    {% endif %}
     {% endblock %}
 
 
