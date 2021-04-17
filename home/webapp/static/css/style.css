@@ -69,3 +69,6 @@ body {
 .clear {
     clear: both;
 }
+.box {
+    border: 3px solid #6a7dcc;
+}

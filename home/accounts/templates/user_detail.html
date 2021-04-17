@@ -15,6 +15,6 @@
     <p>Дата рождения: {{ user_obj.profile.birth_date|date:'d.m.Y' }}</p>
  <p>Почта: {{ user_obj.email }}</p>
 
-    <h2 class="text-center clear">Статьи автора:</h2>
-    {% include 'partial/projects_list.html' %}
+    <h2 class="text-center clear">Проекты Пользователя:</h2>
+    {% include 'partial/project_list.html' %}
 {% endblock %}

@@ -9,14 +9,14 @@
             <input type="checkbox" name="selected_projects"
                    id="selected_projects-{{ project.pk }}" value="{{ project.pk }}">
         </p>
-        <p>Description: ({{ project.description }} | {{ project.get_description_display }})</p>
+        <p>Description: ({{ project.description }})</p>
         {% for i in project.user.all %}
         <p>
-            <a href="{% url 'accounts:detail' i.id %}">{{ project.user }}</a>
-            | {{ project.created_at|date:"d.m.Y H:i:s" }}
+            <a href="{% url 'accounts:detail' i.id %}">{{ i }}</a>
+            | {{ project.timestart|date:"d.m.Y" }}
         </p>
         {% endfor %}
-        <p>Published at: {{ project.publish_at|date:"d.m.Y H:i:s" }}</p>
+        <p>Published at: {{ project.timestart|date:"d.m.Y" }}</p>
         {% if perms.webapp.change_project and request.user in project.user.all %}
             <p><a href="{% url 'webapp:edit' project.pk %}">Update</a></p>
         {% endif %}

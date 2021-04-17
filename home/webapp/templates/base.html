@@ -30,6 +30,10 @@
           <li class="nav-item"><a href="{% url 'accounts:register' %}?next={{ request.get_full_path }}" class="nav-link active" aria-current="page"">Регистрация</a>
           </li>
           {% endif %}
+          {% if perms.accounts.view_user %}
+          <li class="nav-item"><a href="{% url 'accounts:user_list' %}" class="nav-link active" aria-current="page"">Пользователи</a>
+          </li>
+          {% endif %}
         {% block menu %}{% endblock %}
       </ul>
     </div>
