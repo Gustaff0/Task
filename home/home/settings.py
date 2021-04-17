@@ -1,3 +1,4 @@
+import os
 """
 Django settings for home project.
 
@@ -70,6 +71,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'home.wsgi.application'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = '/uploads/'
 
 
 # Database

@@ -1,0 +1,32 @@
+{% if is_paginated %}
+    {% include 'partial/paginate.html' %}
+{% endif %}
+{% for project in projects %}
+    <div class="box">
+        <h3><a href="{% url "webapp:view" project.pk %}">{{ project.name }}</a></h3>
+        <p>
+            <label for="selected_projects-{{ project.pk }}">Select:</label>
+            <input type="checkbox" name="selected_projects"
+                   id="selected_projects-{{ project.pk }}" value="{{ project.pk }}">
+        </p>
+        <p>Description: ({{ project.description }} | {{ project.get_description_display }})</p>
+        {% for i in project.user.all %}
+        <p>
+            <a href="{% url 'accounts:detail' i.id %}">{{ project.user }}</a>
+            | {{ project.created_at|date:"d.m.Y H:i:s" }}
+        </p>
+        {% endfor %}
+        <p>Published at: {{ project.publish_at|date:"d.m.Y H:i:s" }}</p>
+        {% if perms.webapp.change_project and request.user in project.user.all %}
+            <p><a href="{% url 'webapp:edit' project.pk %}">Update</a></p>
+        {% endif %}
+        {% if perms.webapp.change_project and request.user in project.user.all %}
+            <p><a href="{% url 'webapp:delete' project.pk %}">Delete</a></p>
+        {% endif %}
+    </div>
+{% empty %}
+    <h2 class="text-center">Нет Проектов</h2>
+{% endfor %}
+{% if is_paginated %}
+     {% include 'partial/paginate.html' %}
+{% endif %}
