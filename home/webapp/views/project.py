@@ -6,7 +6,7 @@ from webapp.forms import ProjectForm, SearchForm, TaskForm
 from webapp.models import Project, Task
 from django.db.models import Q
 from django.utils.http import urlencode
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.contrib.auth.models import User
 
 class ProjectCreate(PermissionRequiredMixin, CreateView):
@@ -86,6 +86,11 @@ class ProjectView(DetailView):
     model = Project
     template_name = 'project/view.html'
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('accounts:login')
+        return super().dispatch(request, *args, **kwargs)
+
 
 class ProjectDelete(PermissionRequiredMixin, DeleteView):
     template_name = 'project/delete.html'
@@ -97,8 +102,3 @@ class ProjectDelete(PermissionRequiredMixin, DeleteView):
     def has_permission(self):
         return super().has_permission() and self.request.user in self.get_object().user.all()
 
-
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return redirect('accounts:login')
-        return super().dispatch(request, *args, **kwargs)

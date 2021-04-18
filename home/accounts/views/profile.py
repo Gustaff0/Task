@@ -1,9 +1,12 @@
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, UpdateView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.paginator import Paginator
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse, reverse_lazy
+from accounts.models import Profile
 
-class UserDetailView(LoginRequiredMixin, DetailView):
+class UserDetailView(DetailView):
     model = get_user_model()
     template_name = 'user_detail.html'
     context_object_name = 'user_obj'
@@ -18,6 +21,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         kwargs['page_obj'] = page
         kwargs['projects'] = page.object_list
         kwargs['is_paginated'] = page.has_other_pages()
+        kwargs['profile'] = get_object_or_404(Profile, pk=self.kwargs.get('pk'))
         return super().get_context_data(**kwargs)
 
 
@@ -30,3 +34,4 @@ class UserList(PermissionRequiredMixin, ListView):
 
     def has_permission(self):
         return super().has_permission()
+

@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from webapp.models import Project
 from django import forms
+from accounts.models import Profile
 
 
 
@@ -35,3 +36,4 @@ class MyUserUpdate(forms.ModelForm):
     class Meta:
         model = Project
         fields = ['user',]
+
