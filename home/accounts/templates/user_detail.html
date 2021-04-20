@@ -3,7 +3,7 @@
 {% block menu %}
 {% if request.user == profile.user %}
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Редактировать</a>
+      <a class="nav-link active" aria-current="page" href="{% url 'accounts:change' user_obj.pk %}">Редактировать</a>
     </li>
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Смена пароля</a>
