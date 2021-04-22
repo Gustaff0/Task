@@ -1,11 +1,12 @@
 from django.views.generic import DetailView, ListView, UpdateView
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from accounts.models import Profile
 from accounts.forms import UserChangeForm, ProfileChangeForm, PasswordChangeForm
+from django.http import HttpResponseRedirect
 
 
 class UserDetailView(DetailView):
@@ -86,9 +87,14 @@ class UserPasswordChangeView(LoginRequiredMixin, UpdateView):
     form_class = PasswordChangeForm
     context_object_name = 'user_obj'
 
+    def form_valid(self, form):
+        user = form.save()
+        update_session_auth_hash(self.request, user)
+        return HttpResponseRedirect(self.get_success_url())
+
     def get_object(self, queryset=None):
         return self.request.user
 
     def get_success_url(self):
-        return reverse('accounts:login')
+        return reverse('accounts:detail', kwargs={'pk': self.object.pk})
 
