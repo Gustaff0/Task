@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}Пользователь{% endblock %}
 {% block menu %}
-{% if request.user == profile.user %}
+{% if request.user == user_obj %}
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{% url 'accounts:change' user_obj.pk %}">Редактировать</a>
+      <a class="nav-link active" aria-current="page" href="{% url 'accounts:change' %}">Редактировать</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Смена пароля</a>
+      <a class="nav-link active" aria-current="page" href="{% url 'accounts:password_change' %}">Смена пароля</a>
     </li>
 {% endif %}
 {% endblock %}

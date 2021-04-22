@@ -5,7 +5,8 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from accounts.models import Profile
-from accounts.forms import UserChangeForm, ProfileChangeForm
+from accounts.forms import UserChangeForm, ProfileChangeForm, PasswordChangeForm
+
 
 class UserDetailView(DetailView):
     model = get_user_model()
@@ -36,11 +37,14 @@ class UserList(PermissionRequiredMixin, ListView):
     def has_permission(self):
         return super().has_permission()
 
-class UserChangeView(UpdateView):
+class UserChangeView(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = UserChangeForm
     template_name = 'user_change.html'
     context_object_name = 'user_obj'
+
+    def get_object(self, queryset=None):
+        return self.request.user
 
     def get_context_data(self, **kwargs):
         if 'profile_form' not in kwargs:
@@ -74,4 +78,17 @@ class UserChangeView(UpdateView):
 
     def get_success_url(self):
         return reverse('accounts:detail', kwargs={'pk': self.object.pk})
+
+
+class UserPasswordChangeView(LoginRequiredMixin, UpdateView):
+    model = get_user_model()
+    template_name = 'user_password_change.html'
+    form_class = PasswordChangeForm
+    context_object_name = 'user_obj'
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_success_url(self):
+        return reverse('accounts:login')
 

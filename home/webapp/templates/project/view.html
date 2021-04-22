@@ -17,7 +17,7 @@
 <p>Description: {{ project.description }}</p>
     <h4>Users:</h4>
     {% for i in project.user.all %}
-    <p>{{ i }}</p>
+    <p><a href="{% url 'accounts:detail' i.id %}">{{ i }}</a></p>
     {% endfor %}
 
     <h2>Tasks:</h2>
